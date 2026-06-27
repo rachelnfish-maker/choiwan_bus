@@ -8,8 +8,26 @@
 </head>
 <body>
   <main>
-    <h1>彩雲巴士</h1>
-    <p class="stop">即時到站時間</p>
+    <section class="weather-card">
+      <div class="weather-header">
+        <h1>今日天氣</h1>
+        <div class="clock">
+          <div id="todayDate">--</div>
+          <div id="todayTime">--:--</div>
+        </div>
+      </div>
+
+      <div class="weather-body">
+        <div id="weatherIcon" class="weather-icon">☀️</div>
+        <div id="temperature" class="temperature">--°C</div>
+      </div>
+
+      <div id="reminders" class="reminders">
+        <div class="reminder">資料更新中...</div>
+      </div>
+    </section>
+
+    <h2>彩雲巴士</h2>
 
     <section id="busList"></section>
 

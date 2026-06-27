@@ -1,68 +1,170 @@
 body {
   margin: 0;
   font-family: Arial, "Noto Sans TC", sans-serif;
-  background: #111;
+  background:
+    radial-gradient(circle at top left, #1b1b1b, #050505 55%),
+    #050505;
   color: white;
 }
 
 main {
-  max-width: 480px;
+  max-width: 720px;
   margin: auto;
   padding: 24px;
 }
 
-h1 {
-  font-size: 38px;
-  margin-bottom: 6px;
+.weather-card {
+  background: linear-gradient(145deg, #1d1d1d, #101010);
+  border: 1px solid #333;
+  border-radius: 26px;
+  padding: 28px;
+  margin-bottom: 34px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
-.stop {
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 46px;
+  letter-spacing: 1px;
+}
+
+.clock {
+  text-align: right;
+  color: #ccc;
+}
+
+#todayDate {
   font-size: 22px;
-  color: #bbb;
-  margin-bottom: 24px;
+}
+
+#todayTime {
+  margin-top: 6px;
+  font-size: 46px;
+  font-weight: 800;
+}
+
+.weather-body {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 32px 0;
+}
+
+.weather-icon {
+  font-size: 86px;
+}
+
+.temperature {
+  font-size: 84px;
+  font-weight: 900;
+  letter-spacing: -3px;
+}
+
+.reminders {
+  border-top: 1px solid #333;
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.reminder {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 26px 22px;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 54px;
+  margin: 0 0 22px;
+  letter-spacing: 1px;
 }
 
 .card {
-  background: #1f1f1f;
-  border-radius: 18px;
-  padding: 22px;
-  margin-bottom: 16px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px 1fr 210px;
+  gap: 20px;
+  align-items: center;
+  background: linear-gradient(145deg, #1d1d1d, #101010);
   border: 1px solid #333;
+  border-radius: 22px;
+  padding: 26px 24px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
 }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  background: #58d86b;
 }
 
 .route {
-  font-size: 42px;
-  font-weight: bold;
+  font-size: 62px;
+  font-weight: 900;
   color: #ffcc00;
+  line-height: 1;
+}
+
+.info {
+  min-width: 0;
 }
 
 .dest {
-  font-size: 20px;
-  color: #eee;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
 .boarding {
-  margin-top: 6px;
-  font-size: 16px;
-  color: #999;
+  font-size: 18px;
+  color: #aaa;
+}
+
+.eta-area {
+  text-align: right;
 }
 
 .eta {
-  margin-top: 18px;
-  font-size: 34px;
-  line-height: 1.3;
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.eta .unit {
+  font-size: 26px;
+  margin-left: 4px;
 }
 
 .next {
-  margin-top: 4px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #333;
   font-size: 24px;
-  color: #aaa;
+  color: #ddd;
+}
+
+.next strong {
+  font-size: 30px;
+  color: white;
+  white-space: nowrap;
 }
 
 .loading {
@@ -71,7 +173,96 @@ h1 {
 
 #updated {
   text-align: center;
-  color: #aaa;
-  margin-top: 24px;
-  font-size: 14px;
+  color: #777;
+  margin-top: 28px;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  #todayDate {
+    font-size: 16px;
+  }
+
+  #todayTime {
+    font-size: 34px;
+  }
+
+  .weather-card {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .weather-body {
+    gap: 20px;
+    margin: 26px 0;
+  }
+
+  .weather-icon {
+    font-size: 64px;
+  }
+
+  .temperature {
+    font-size: 64px;
+  }
+
+  .reminders {
+    grid-template-columns: 1fr;
+  }
+
+  .reminder {
+    font-size: 34px;
+    padding: 24px 20px;
+  }
+
+  h2 {
+    font-size: 42px;
+  }
+
+  .card {
+    grid-template-columns: 82px 1fr;
+    grid-template-areas:
+      "route info"
+      "eta eta";
+    gap: 14px;
+    padding: 22px 20px;
+  }
+
+  .route {
+    grid-area: route;
+    font-size: 50px;
+  }
+
+  .info {
+    grid-area: info;
+  }
+
+  .dest {
+    font-size: 22px;
+  }
+
+  .boarding {
+    font-size: 15px;
+  }
+
+  .eta-area {
+    grid-area: eta;
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .eta {
+    font-size: 48px;
+  }
+
+  .next {
+    font-size: 22px;
+  }
 }
